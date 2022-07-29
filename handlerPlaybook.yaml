@@ -1,0 +1,15 @@
+---
+- hosts: servers
+  become: yes
+  tasks:
+  - name: install nginx
+    package:
+      name: nginx
+      state: latest
+    notify: Restart nginx
+
+  handlers:
+  - name: Restart nginx
+    service:
+      name: nginx
+      state: restarted

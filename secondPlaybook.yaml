@@ -1,0 +1,17 @@
+---
+- hosts: appservers
+  become: yes
+  tasks:
+    - name: install wget
+      package: 
+        name: wget 
+        state: absent
+
+- hosts: dbservers
+  become: yes
+  tasks:
+    - name: uninstall wget
+      package: 
+        name: wget 
+        state: present
+... 

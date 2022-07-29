@@ -1,0 +1,26 @@
+---
+- hosts: servers
+  become: yes
+  tasks:
+  - block:
+    - name: install multiple
+      package:
+        name: "{{ item }}"
+        state: absent
+
+      with_items:
+      - vim
+      - nginx
+      - wget  
+    
+    rescue:
+    - name: Recovery block
+      debug:
+        msg: "something failed"
+
+    always:
+    - name: always
+      debug:
+        msg: "in always"
+...
+

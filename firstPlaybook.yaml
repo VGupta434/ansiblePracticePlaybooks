@@ -1,0 +1,5 @@
+---
+- hosts: servers
+  become: yes
+  tasks:
+  - package: name=wget state=absent

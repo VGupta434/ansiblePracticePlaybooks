@@ -1,0 +1,20 @@
+---
+- name: Playbook with conditional statement
+  hosts: localhost
+  vars:
+    x: 10
+    y: 20
+    arr: [10,20,30]
+  tasks:
+  - name: task1
+    debug:
+      msg: 
+      - "The value of x is {{ x }} and the value of y is {{ y }}"
+      - "the list contains: {{ arr }}"
+    when: x == y
+    
+  - name: task2
+    debug:
+      msg: "x is present in list"
+    when: x in arr
+...
